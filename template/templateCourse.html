@@ -33,6 +33,14 @@
         position: relative;
         word-spacing: 3px;
       }
+      h3, h3 a:visited, h3, a:active, h3 a:link {
+        font-family: 'Megrim', sans-serif;
+        font-size: 2rem;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        position: relative;
+        word-spacing: 3px;
+      }
       .container {
         width: 95rem;
         margin: 0 auto;
@@ -40,7 +48,7 @@
       .course {
         width: 60rem;
         margin: 0 auto;
-        margin-top: 9rem;
+        margin-top: 1rem;
         background: white;
         box-shadow: 0 3rem 6rem 1rem rgba(0, 0, 0, 0.2);
         position: relative;
@@ -78,7 +86,7 @@
         word-spacing: 2px;
       }
       .course__info {
-        padding: 2rem 2rem;
+        padding: 1rem 1rem;
         font-size: 1.6rem;
         line-height: 1.8;
       }
@@ -107,35 +115,49 @@
       .emoji-right {
         font-size: 2rem;
         margin-left: 1rem;
-        //test
+        
       }
     </style>
   </head>
-
   <body>
     <div class="container">
-      <h1>📚 University Course List 📚</h1>
-      <figure class="course">
-        <a href="/" class="course__back">
-          <span class="emoji-left">👈</span>Back
-        </a>
-  
-        <h2 class="course__name">{%NAME%}</h2>
+      <h1>📚 Loan Amount 📚</h1>
+           <figure class="course">
+        <h2 class="course__name">Customer Name: {%CUSTOMERNAME%}</h2>
         <div class="course__info">
-          <p><span class="emoji-left">🗞</span>Major in: {%FROM%}</p>
+          <span class="emoji-left">🗞</span>Phone: {%PHONENUMBER%}
         </div>
         <div class="course__info">
-             <span><class="emoji-left">🎓</span>Instructors: {%INSTRUCTOR%}
+             <span><class="emoji-left">🎓</span>Address: {%ADDRESS%}
         </div>
-
-        <a href="#" class="course__info">
-          <span> 🧮 Credits = {%CREDITS%}</span>
-        </a>
-  
-        <p class="course__info">
-          🏬 Department: {%DESCRIPTION%}
-        </p>
+                <div class="course__info">
+          <span class="emoji-left"> 🏬</span>Loan type: {%LOANTYPE%} 
+        </div>
+        <div class="course__info">
+          <span class="emoji-left"> 🏬</span>Description: {%DESCRIPTION%} 
+        </div>
+        <hr>
+        <div class="course__info">
+          <span class="emoji-left"> 🏬</span>Monthly Payment: {%MONTHLYPAYMENT%} 
+        </div>
+        <div class="course__info">
+          <span class="emoji-left"> 🏬</span>Interest Rate: {%INTERESTRATE%} 
+        </div>
+        <div class="course__info">
+          <span class="emoji-left"> 🏬</span>Loan term years: {%LOANTERMYEARS%} 
+        </div>
+        <hr>        
+        <div class="course__info">
+          <span class="emoji-left"> 🏬</span><b>Your loan amount is: : {%LOANAMOUNT%} </b>
+        </div>
       </figure>
+      <h3>
+        <a href="/customer?id=0">0</a>
+        <a href="/customer?id=1">1</a>
+        <a href="/customer?id=2">2</a>
+        <a href="/customer?id=3">3</a>
+        <a href="/customer?id=4">4</a>
+      </h3>
     </div>
   </body>
 </html>

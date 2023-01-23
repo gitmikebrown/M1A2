@@ -1,14 +1,16 @@
 const httpServer = require('http');
 const url = require('url');
 const fs = require('fs');
+const formatter = new Intl.NumberFormat('en-us', {style: 'currency', currency: 'USD'})
+
 
 const replaceTemplate = require('./modules/replaceTemplate');
 
 
 /// Read data from file
-// Template
+// Data
 const tempCourse = fs.readFileSync(
-    `${__dirname}/data/data.json`,
+    `${__dirname}/data/loan.json`,
     'utf-8'
  );
 
@@ -19,18 +21,6 @@ const templateHTMLCourse = fs.readFileSync(
     'utf-8'
   );
 
-// //   function replaceTemplate(htmlStr, course){
-// const replaceTemplate = (htmlStr, course)=>{ // fat arrow function or lambda
-//     let output = htmlStr.replace(/{%NAME%}/g, course.courseName);
-//     output = output.replace(/{%IMAGE%}/g, course.image);
-//     output = output.replace(/{%FROM%}/g, course.from);
-//     output = output.replace(/{%INSTRUCTOR%}/g, course.instructor);
-//     output = output.replace(/{%CREDITS%}/g, course.credits);
-//     output = output.replace(/{%DESCRIPTION%}/g, course.description);
-//     output = output.replace(/{%ID%}/g, course.id);
-//     return output;
-// }
-
  const dataObj = JSON.parse(tempCourse);// string to JavaScript Object JSON
 
 ////////////////////////////////
@@ -38,22 +28,28 @@ const templateHTMLCourse = fs.readFileSync(
 // const server = httpServer.createServer(function (req, res) {// call back function
 const server = httpServer.createServer( (req, res) =>{// call back function
 
-    // const urlParameter = url.parse(req.url, true);
-    // console.log(JSON.stringify(urlParameter.query));// convert to String
-    // console.log(JSON.stringify(urlParameter.pathname));// convert to String
+    
     const {query,pathname} = url.parse(req.url, true); // object distructors
     if(query.id){// if there is query parameter named id read as string
         // Courses page
-        if (pathname === '/' || pathname.toLowerCase() === '/courses') {
+        if (pathname === '/' || pathname.toLowerCase() === '/customer') {
             res.writeHead(200, {// Every thing ran successfully
                 'Content-type': 'text/html'
             });
+
+            const IR = dataObj[Number(query.id)].interestRate / 12;
+            const PMT = dataObj[Number(query.id)].monthlyPayment;
+            const nMonths = dataObj[Number(query.id)].loanTermYears * 12;
+            const PV = formatter.format((PMT / IR) * (1-(1/(1+IR)**nMonths)))
+            
+            console.log(IR, PMT, nMonths, PV);
+
+            
+
             const course = dataObj[Number(query.id)];// convert string to numeric value
             const strCourseName = JSON.stringify(course);
-            const courseHTML = replaceTemplate(templateHTMLCourse, course);// function that will replace the course values in the HTML
-            //   res.end(` We received our first request from the client at resource ${urlParameter.pathname.toLowerCase()} with query parameter ${urlParameter.query.id}
-            //   ${JSON.stringify(course)}// convert object back to string
-            //   `)
+            const courseHTML = replaceTemplate(templateHTMLCourse, course, PV);// function that will replace the course values in the HTML
+           
             res.end(courseHTML);
         }
     }

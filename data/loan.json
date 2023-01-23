@@ -1,0 +1,64 @@
+[
+    {
+        "id": 0,
+        "customerName": "Mike",
+        "phoneNumber": "555-555-5551",
+        "address": "123 anytown",
+        "monthlyPayment": "250",
+        "interestRate": ".06",
+        "loanTermYears": "15",
+        "loanType": "HELOC",
+        "description":"This is a line of credit"
+        
+    },
+    {
+        "id": 1,
+        "customerName": "Bill",
+        "phoneNumber": "555-555-5552",
+        "address": "123 anytown",
+        "monthlyPayment": "300",
+        "interestRate": ".06",
+        "loanTermYears": "40",
+        "loanType": "HELOC",
+        "description":"This is a line of credit"
+        
+    },
+    {
+        "id": 2,
+        "customerName": "Bob",
+        "phoneNumber": "555-555-5553",
+        "address": "123 anytown",
+        "monthlyPayment": "500",
+        "interestRate": ".06",
+        "loanTermYears": "30",
+        "loanType": "HELOC",
+        "description":"This is a line of credit"
+        
+    },
+    {
+        "id": 3,
+        "customerName": "Eva",
+        "phoneNumber": "555-555-5554",
+        "address": "123 anytown",
+        "monthlyPayment": "700",
+        "interestRate": ".06",
+        "loanTermYears": "15",
+        "loanType": "HELOC",
+        "description":"This is a line of credit"
+        
+    },
+    {
+        "id": 4,
+        "customerName": "Bella",
+        "phoneNumber": "555-555-5555",
+        "address": "123 anytown",
+        "monthlyPayment": "900",
+        "interestRate": ".06",
+        "loanTermYears": "7",
+        "loanType": "HELOC",
+        "description":"This is a line of credit"
+        
+    }
+    
+    
+]

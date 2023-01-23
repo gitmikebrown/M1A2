@@ -1,11 +1,13 @@
 
-module.exports = (htmlStr, course)=>{ // fat arrow function or lambda
-    let output = htmlStr.replace(/{%NAME%}/g, course.courseName);
-    output = output.replace(/{%IMAGE%}/g, course.image);
-    output = output.replace(/{%FROM%}/g, course.from);
-    output = output.replace(/{%INSTRUCTOR%}/g, course.instructor);
-    output = output.replace(/{%CREDITS%}/g, course.credits);
+module.exports = (htmlStr, course, PV)=>{ // fat arrow function or lambda
+    let output = htmlStr.replace(/{%CUSTOMERNAME%}/g, course.customerName);
+    output = output.replace(/{%PHONENUMBER%}/g, course.phoneNumber);
+    output = output.replace(/{%ADDRESS%}/g, course.address);
+    output = output.replace(/{%MONTHLYPAYMENT%}/g, course.monthlyPayment);
+    output = output.replace(/{%INTERESTRATE%}/g, course.interestRate);
+    output = output.replace(/{%LOANTERMYEARS%}/g, course.loanTermYears);
+    output = output.replace(/{%LOANTYPE%}/g, course.loanType);
     output = output.replace(/{%DESCRIPTION%}/g, course.description);
-    output = output.replace(/{%ID%}/g, course.id);
+    output = output.replace(/{%LOANAMOUNT%}/g, PV);
     return output;
 }
